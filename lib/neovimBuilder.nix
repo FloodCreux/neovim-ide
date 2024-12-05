@@ -62,8 +62,8 @@ rec {
       customRC = finalConfigRC;
 
       packages.myVimPackage = {
-        start = builtins.filter (f: f != null) vim.startPlugin;
-        opt = vim.optPlugin;
+        start = builtins.filter (f: f != null) vim.startPlugins;
+        opt = vim.optPlugins;
       };
     };
   };

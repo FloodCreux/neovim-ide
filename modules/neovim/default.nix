@@ -1,7 +1,7 @@
 { lib, pkgs, ... }:
 with lib;
 {
-  options.vim.neovim.packae = mkOption {
+  options.vim.neovim.package = mkOption {
     type = types.package;
     default = pkgs.neovim-unwrapped;
     description = "The Neovim package to use. Default pkgs.neovim-unwrapped";

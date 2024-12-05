@@ -251,6 +251,22 @@
         "type": "github"
       }
     },
+    "plenary-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1726602776,
+        "narHash": "sha256-bmmPekAvuBvLQmrnnX0n+FRBqfVxBsObhxIEkDGAla4=",
+        "owner": "nvim-lua",
+        "repo": "plenary.nvim",
+        "rev": "2d9b06177a975543726ce5c73fca176cedbffe9d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nvim-lua",
+        "repo": "plenary.nvim",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "flake-schemas": "flake-schemas",
@@ -258,6 +274,7 @@
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nixpkgs": "nixpkgs",
         "nvim-lspconfig": "nvim-lspconfig",
+        "plenary-nvim": "plenary-nvim",
         "tree-sitter-scala": "tree-sitter-scala"
       }
     },

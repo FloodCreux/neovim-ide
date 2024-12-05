@@ -22,6 +22,12 @@
       url = "github:neovim/nvim-lspconfig";
       flake = false;
     };
+
+    # Dependency of other plugins
+    plenary-nvim = {
+      url = "github:nvim-lua/plenary.nvim";
+      flake = false;
+    };
   };
 
   outputs =
