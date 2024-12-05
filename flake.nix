@@ -17,6 +17,11 @@
       flake = false;
     };
 
+    nvim-metals = {
+      url = "github:scalameta/nvim-metals";
+      flake = false;
+    };
+
     # LSP plugins
     nvim-lspconfig = {
       url = "github:neovim/nvim-lspconfig";
@@ -56,7 +61,7 @@
 
         lib = import ./lib { inherit pkgs inputs plugins; };
 
-        inherit (lib) neovimBuilder;
+        inherit (lib) metalsBuilder metalsOverlay neovimBuilder;
 
         pluginOverlay = lib.buildPluginOverlay;
 
@@ -93,6 +98,7 @@
           overlays = [
             libOverlay
             pluginOverlay
+            metalsOverlay
             neovimOverlay
             tsOverlay
           ];
@@ -123,7 +129,7 @@
         };
 
         overlays.default = f: p: {
-          inherit neovimBuilder;
+          inherit metalsBuilder neovimBuilder;
           inherit (pkgs) neovim-nightly neovimPlugins;
         };
 

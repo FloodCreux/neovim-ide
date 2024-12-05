@@ -21,6 +21,23 @@ let
         enable = true;
         folds = true;
         formatOnSave = false;
+
+        scala = {
+          enable = true;
+          metals = {
+            package = pkgs.metals;
+            # best effort compilation + vs code default settings
+            # see https://github.com/scalameta/metals-vscode/blob/1e10e1a71cf81569ea65329ec2aa0aa1cb6ad682/packages/metals-vscode/package.json#L232
+            serverProperties = [
+              "-Dmetals.enable-best-effort=true"
+              "-Xmx2G"
+              "-XX:+UseZGC"
+              "-XX:ZUncommitDelay=30"
+              "-XX:ZCollectionInterval=5"
+              "-XX:+IgnoreUnrecognizedVMOptions"
+            ];
+          };
+        };
       };
     };
   };
