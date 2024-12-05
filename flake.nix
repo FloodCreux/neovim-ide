@@ -12,11 +12,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    tree-sitter-scala = {
-      url = "github:tree-sitter/tree-sitter-scala";
-      flake = false;
-    };
-
     nvim-metals = {
       url = "github:scalameta/nvim-metals";
       flake = false;
@@ -25,6 +20,31 @@
     # LSP plugins
     nvim-lspconfig = {
       url = "github:neovim/nvim-lspconfig";
+      flake = false;
+    };
+
+    nvim-treesitter = {
+      url = "github:nvim-treesitter/nvim-treesitter";
+      flake = false;
+    };
+
+    tree-sitter-scala = {
+      url = "github:tree-sitter/tree-sitter-scala";
+      flake = false;
+    };
+
+    nvim-treesitter-textobjects = {
+      url = "github:nvim-treesitter/nvim-treesitter-textobjects";
+      flake = false;
+    };
+
+    nvim-treesitter-context = {
+      url = "github:nvim-treesitter/nvim-treesitter-context";
+      flake = false;
+    };
+
+    nvim-ts-autotag = {
+      url = "github:windwp/nvim-ts-autotag";
       flake = false;
     };
 
@@ -146,6 +166,8 @@
           docs-json = searchdocs.json;
           docs-search = searchdocs.html;
 
+          ts-scala = pkgs.tree-sitter-scala-master;
+          inherit (pkgs) metals;
           inherit (pkgs.neovimPlugins) nvim-treesitter;
 
           ide = default-ide.full.neovim;
