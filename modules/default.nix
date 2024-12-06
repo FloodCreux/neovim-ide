@@ -7,6 +7,7 @@
     ./lsp
     ./neovim
     ./telescope
+    ./theme
     ./treesitter
   ];
 }

@@ -49,6 +49,11 @@ let
         tabs.enable = true;
         mediaFiles.enable = false;
       };
+      theme = {
+        enable = true;
+        name = "gruber-darker";
+        transparency = true;
+      };
       treesitter = {
         enable = true;
         autotagHtml = true;

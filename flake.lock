@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "catppuccin": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1732428187,
+        "narHash": "sha256-Oogw5wmYkx/zsMlPE/r6Kt3cy5sC92rwVzf0P9rzqyw=",
+        "owner": "catppuccin",
+        "repo": "nvim",
+        "rev": "faf15ab0201b564b6368ffa47b56feefc92ce3f4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "catppuccin",
+        "repo": "nvim",
+        "type": "github"
+      }
+    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -156,6 +172,22 @@
         "type": "github"
       }
     },
+    "gruber-darker": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1704756801,
+        "narHash": "sha256-dMs2gdzhS8DLg6P0+msJ+cYluV9LoXE5cW3rI2i+tus=",
+        "owner": "blazkowolf",
+        "repo": "gruber-darker.nvim",
+        "rev": "a2dda61d9c1225e16951a51d6b89795b0ac35cd6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "blazkowolf",
+        "repo": "gruber-darker.nvim",
+        "type": "github"
+      }
+    },
     "hercules-ci-effects": {
       "inputs": {
         "flake-parts": "flake-parts_2",
@@ -216,6 +248,22 @@
       "original": {
         "owner": "neovim",
         "repo": "neovim",
+        "type": "github"
+      }
+    },
+    "nightfox": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1725836615,
+        "narHash": "sha256-fVHC3FfGeRGYtB1MKpmLSITk9TDBY/yDCOlQuKvAH5I=",
+        "owner": "EdenEast",
+        "repo": "nightfox.nvim",
+        "rev": "7557f26defd093c4e9bc17f28b08403f706f5a44",
+        "type": "github"
+      },
+      "original": {
+        "owner": "EdenEast",
+        "repo": "nightfox.nvim",
         "type": "github"
       }
     },
@@ -363,6 +411,22 @@
         "type": "github"
       }
     },
+    "onedark": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1731171496,
+        "narHash": "sha256-NLHq9SUUo81m50NPQe8852uZbo4Mo4No10N3ptX43t0=",
+        "owner": "navarasu",
+        "repo": "onedark.nvim",
+        "rev": "67a74c275d1116d575ab25485d1bfa6b2a9c38a6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "navarasu",
+        "repo": "onedark.nvim",
+        "type": "github"
+      }
+    },
     "plenary-nvim": {
       "flake": false,
       "locked": {
@@ -381,9 +445,12 @@
     },
     "root": {
       "inputs": {
+        "catppuccin": "catppuccin",
         "flake-schemas": "flake-schemas",
         "flake-utils": "flake-utils",
+        "gruber-darker": "gruber-darker",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
+        "nightfox": "nightfox",
         "nixpkgs": "nixpkgs",
         "noice": "noice",
         "nvim-lspconfig": "nvim-lspconfig",
@@ -393,12 +460,31 @@
         "nvim-treesitter-textobjects": "nvim-treesitter-textobjects",
         "nvim-ts-autotag": "nvim-ts-autotag",
         "nvim-web-devicons": "nvim-web-devicons",
+        "onedark": "onedark",
         "plenary-nvim": "plenary-nvim",
+        "rosepine": "rosepine",
         "telescope": "telescope",
         "telescope-media-files": "telescope-media-files",
         "telescope-tabs": "telescope-tabs",
+        "tokyonight": "tokyonight",
         "tree-sitter-scala": "tree-sitter-scala",
         "which-key": "which-key"
+      }
+    },
+    "rosepine": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1729724348,
+        "narHash": "sha256-/a4pwuVJ5odm3Iio2MeoqAm8GlWIPI91mM4cVnSy/gE=",
+        "owner": "rose-pine",
+        "repo": "neovim",
+        "rev": "07a887a7bef4aacea8c7caebaf8cbf808cdc7a8e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "rose-pine",
+        "repo": "neovim",
+        "type": "github"
       }
     },
     "systems": {
@@ -461,6 +547,22 @@
       "original": {
         "owner": "FabianWirth",
         "repo": "search.nvim",
+        "type": "github"
+      }
+    },
+    "tokyonight": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1733214463,
+        "narHash": "sha256-ay6WR9RPikcFYnRcMoSml9XTK0qib2K3dkhDbnKEHtU=",
+        "owner": "folke",
+        "repo": "tokyonight.nvim",
+        "rev": "15d83cda572d7498b43bbdaa223bc75bf341183e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "folke",
+        "repo": "tokyonight.nvim",
         "type": "github"
       }
     },

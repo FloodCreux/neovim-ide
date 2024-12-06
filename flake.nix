@@ -70,6 +70,37 @@
       flake = false;
     };
 
+    # Themes
+    catppuccin = {
+      url = "github:catppuccin/nvim";
+      flake = false;
+    };
+
+    nightfox = {
+      url = "github:EdenEast/nightfox.nvim";
+      flake = false;
+    };
+
+    onedark = {
+      url = "github:navarasu/onedark.nvim";
+      flake = false;
+    };
+
+    rosepine = {
+      url = "github:rose-pine/neovim";
+      flake = false;
+    };
+
+    tokyonight = {
+      url = "github:folke/tokyonight.nvim";
+      flake = false;
+    };
+
+    gruber-darker = {
+      url = "github:blazkowolf/gruber-darker.nvim";
+      flake = false;
+    };
+
     noice = {
       url = "github:folke/noice.nvim";
       flake = false;
