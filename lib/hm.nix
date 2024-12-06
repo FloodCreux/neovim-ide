@@ -8,7 +8,7 @@
 
 let
   cfg = config.programs.neovim-ide;
-  set = pkgs.neovimBuilder { config = cfg.settings; };
+  set = lib.neovimBuilder { config = cfg.settings; };
 in
 with lib;
 {
