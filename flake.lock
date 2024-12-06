@@ -16,6 +16,22 @@
         "type": "github"
       }
     },
+    "conform": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1733253508,
+        "narHash": "sha256-n6sOzOpHkvbDyyNWuqy/t86MhkkB5MYoNdx0ljuuhRU=",
+        "owner": "stevearc",
+        "repo": "conform.nvim",
+        "rev": "02fd64fb3d4b18ec029c0e0683c3dc3ec6d2c5b8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "stevearc",
+        "repo": "conform.nvim",
+        "type": "github"
+      }
+    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -462,6 +478,7 @@
     "root": {
       "inputs": {
         "catppuccin": "catppuccin",
+        "conform": "conform",
         "flake-schemas": "flake-schemas",
         "flake-utils": "flake-utils",
         "gruber-darker": "gruber-darker",

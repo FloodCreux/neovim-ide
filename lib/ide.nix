@@ -18,6 +18,11 @@ let
         vim-repeat
       ];
       mapLeaderSpace = true;
+      format = {
+        conform = {
+          enable = true;
+        };
+      };
       keys = {
         enable = true;
         whichKey.enable = true;

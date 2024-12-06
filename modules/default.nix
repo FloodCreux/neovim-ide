@@ -3,6 +3,7 @@
   imports = [
     ./basic
     ./core
+    ./format
     ./keys
     ./lsp
     ./neovim

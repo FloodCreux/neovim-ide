@@ -64,6 +64,12 @@
       flake = false;
     };
 
+    # Formatters
+    conform = {
+      url = "github:stevearc/conform.nvim";
+      flake = false;
+    };
+
     # UI
     nvim-web-devicons = {
       url = "github:kyazdani42/nvim-web-devicons";
