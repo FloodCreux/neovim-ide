@@ -7,8 +7,9 @@
 }:
 
 let
+  neovimBuilder = import ../lib/neovimBuilder.nix { inherit pkgs; };
   cfg = config.programs.neovim-ide;
-  set = pkgs.neovimBuilder { config = cfg.settings; };
+  set = neovimBuilder { config = cfg.settings; };
 in
 with lib;
 {
