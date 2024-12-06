@@ -56,9 +56,9 @@ in
         "<leader>fld" = "<cmd> Telescope diagnostics<CR>";
       })
       // (withAttrSet cfg.mediaFiles.enable {
-        "<leader>fi" = "<cmd> Telescope treesitter<CR>";
+        "<leader>fi" = "<cmd> Telescope media_files<CR>";
       })
-      // (withAttrSet cfg.vim.treesitter.enable {
+      // (withAttrSet config.vim.treesitter.enable {
         "<leader>fts" = "<cmd> Telescope treesitter<CR>";
       });
 
@@ -68,13 +68,13 @@ in
       ''}
 
       ${writeIf cfg.tabs.enable ''
-        local builtin = require("telescope.builtin")
-        require("search").setup {
+        local builtin = require('telescope.builtin')
+        require("search").setup({
           append_tabs = {
             {
               name = "Scala files",
               tele_func = function()
-                builtin.fd({find_command = { "${pkgs.fd}/bin/fd", "-e", "scala" } })
+                builtin.fd({ find_command = { "${pkgs.fd}/bin/fd", "-e", "scala" } })
               end,
               available = function()
                 local scalaFiles = vim.fn.glob("*.scala", ".") .. vim.fn.glob("*.sbt", ".")
@@ -82,7 +82,7 @@ in
               end
             }
           },
-        }
+        })
       ''}
 
       ${writeIf keys.enable ''
@@ -93,30 +93,30 @@ in
         })
       ''}
 
-        require("telescope").setup {
-          defaults = {
-            vimgrep_arguments = {
-              "${pkgs.ripgrep}/bin/rg",
-              "--color=never",
-              "--no-heading",
-              "--with-filename",
-              "--line-number",
-              "--column",
-              "--smart-case"
-            },
-            pickers = {
-              find_command = {
-                "${pkgs.fd}/bin/fd",
-              },
+      require("telescope").setup {
+        defaults = {
+          vimgrep_arguments = {
+            "${pkgs.ripgrep}/bin/rg",
+            "--color=never",
+            "--no-heading",
+            "--with-filename",
+            "--line-number",
+            "--column",
+            "--smart-case"
+          },
+          pickers = {
+            find_command = {
+              "${pkgs.fd}/bin/fd",
             },
           },
-          extensions = {
-            media_files = {
-              filetypes = {"png", "webp", "jpg", "jpeg"},
-              find_cmd = "${pkgs.fd}/bin/fd",
-            }
+        },
+        extensions = {
+          media_files = {
+            filetypes = {"png", "webp", "jpg", "jpeg"},
+            find_cmd = "${pkgs.fd}/bin/fd",
           }
         }
+      }
     '';
   };
 }

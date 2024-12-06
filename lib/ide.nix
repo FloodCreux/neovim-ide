@@ -17,6 +17,7 @@ let
         multiple-cursors
         vim-repeat
       ];
+      mapLeaderSpace = true;
       keys = {
         enable = true;
         whichKey.enable = true;
