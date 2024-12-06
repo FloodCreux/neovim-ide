@@ -519,6 +519,7 @@
         "telescope-tabs": "telescope-tabs",
         "tokyonight": "tokyonight",
         "tree-sitter-scala": "tree-sitter-scala",
+        "trouble": "trouble",
         "which-key": "which-key"
       }
     },
@@ -630,6 +631,22 @@
       "original": {
         "owner": "tree-sitter",
         "repo": "tree-sitter-scala",
+        "type": "github"
+      }
+    },
+    "trouble": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1732701472,
+        "narHash": "sha256-JhnERZfma2JHFEn/DElVmrSU5KxM2asx3SJ+86lCfoo=",
+        "owner": "folke",
+        "repo": "trouble.nvim",
+        "rev": "46cf952fc115f4c2b98d4e208ed1e2dce08c9bf6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "folke",
+        "repo": "trouble.nvim",
         "type": "github"
       }
     },

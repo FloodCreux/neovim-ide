@@ -23,6 +23,12 @@
       flake = false;
     };
 
+    trouble = {
+      url = "github:folke/trouble.nvim";
+      flake = false;
+    };
+
+    # Treesitter
     nvim-treesitter = {
       url = "github:nvim-treesitter/nvim-treesitter";
       flake = false;
@@ -253,6 +259,7 @@
           inherit (pkgs.neovimPlugins) nvim-treesitter;
 
           ide = default-ide.full.neovim;
+          nightly = default-ide.full-nightly.neovim;
         };
       }
     );

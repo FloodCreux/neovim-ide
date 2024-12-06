@@ -48,6 +48,8 @@ let
             ];
           };
         };
+
+        trouble.enable = true;
       };
       mini = {
         enable = true;
