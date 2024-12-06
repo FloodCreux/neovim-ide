@@ -246,7 +246,7 @@
         homeManagerModules = {
           default = {
             imports = [
-              { nipkgs.overlays = [ overlays.default ]; }
+              { nixpkgs.overlays = [ overlays.default ]; }
             ];
           };
         };
