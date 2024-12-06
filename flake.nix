@@ -243,10 +243,12 @@
           };
         };
 
-        homeManagerModules.default = {
-          imports = [
-            { nipkgs.overlays = [ overlays.default ]; }
-          ];
+        homeManagerModules = {
+          default = {
+            imports = [
+              { nipkgs.overlays = [ overlays.default ]; }
+            ];
+          };
         };
 
         packages = {
