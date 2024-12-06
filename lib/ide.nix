@@ -17,6 +17,10 @@ let
         multiple-cursors
         vim-repeat
       ];
+      keys = {
+        enable = true;
+        whichKey.enable = true;
+      };
       lsp = {
         enable = true;
         folds = true;
@@ -38,6 +42,11 @@ let
             ];
           };
         };
+      };
+      telescope = {
+        enable = true;
+        tabs.enable = true;
+        mediaFiles.enable = false;
       };
       treesitter = {
         enable = true;

@@ -5,6 +5,7 @@
     ./core
     ./lsp
     ./neovim
+    ./telescope
     ./treesitter
   ];
 }

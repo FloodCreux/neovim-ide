@@ -48,6 +48,39 @@
       flake = false;
     };
 
+    # Telescope
+    telescope = {
+      url = "github:nvim-telescope/telescope.nvim";
+      flake = false;
+    };
+
+    telescope-media-files = {
+      url = "github:gvolpe/telescope-media-files.nvim";
+      flake = false;
+    };
+
+    telescope-tabs = {
+      url = "github:FabianWirth/search.nvim";
+      flake = false;
+    };
+
+    # UI
+    nvim-web-devicons = {
+      url = "github:kyazdani42/nvim-web-devicons";
+      flake = false;
+    };
+
+    noice = {
+      url = "github:folke/noice.nvim";
+      flake = false;
+    };
+
+    # Keybinding
+    which-key = {
+      url = "github:folke/which-key.nvim";
+      flake = false;
+    };
+
     # Dependency of other plugins
     plenary-nvim = {
       url = "github:nvim-lua/plenary.nvim";

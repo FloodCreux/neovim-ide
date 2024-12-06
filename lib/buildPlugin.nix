@@ -18,12 +18,22 @@ let
     };
   };
 
+  telescopeFixupHook = ''
+    substituteInPlace $out/scripts/vimg \
+      --replace "ueberzug layer" "${pkgs.ueberzug}/bin/ueberzug layer"
+    substituteInPlace $out/lua/telescope/_extensions/media_files.lua \
+      --replace "M.base_directory .. '/scripts/vimg'" "'$out/scripts/vimg'"
+  '';
+
   buildPlug =
     name: grammars:
     buildVimPlugin {
       pname = name;
       version = "master";
       src = builtins.getAttr name inputs;
+      preFixup = ''
+        ${writeIf (name == "telescope-media-files") telescopeFixupHook}
+      '';
     };
 
   vimPlugins = {
