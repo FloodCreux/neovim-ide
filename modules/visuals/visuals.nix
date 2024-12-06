@@ -42,15 +42,6 @@ in
 
     vim.luaConfigRC = ''
       ${writeIf cfg.noice.enable ''
-        ${writeIf keys.enable ''
-          wk.register({
-            ["<leader>n"] = {
-              name = "Noice",
-              d = { "<cmd> NoiceDismiss <CR>", "Dismiss notifications"},
-            },
-          })
-        ''}
-
         require("noice").setup {
           lsp = {
             override = {
@@ -78,6 +69,12 @@ in
             long_message_to_split = true,
             inc_rename = true,
           },
+          ${writeIf keys.enable ''
+            keys = {
+              { "<leader>n", group = "Noice" },
+              { "<leader>nd", "<cmd> NoiceDismiss <CR>", desc = "Dismiss notifications" },
+            },
+          ''}
         }
       ''}
     '';

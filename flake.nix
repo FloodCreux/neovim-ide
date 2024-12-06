@@ -118,6 +118,7 @@
       flake = false;
     };
 
+    # noice dep
     nui-nvim = {
       url = "github:MunifTanjim/nui.nvim";
       flake = false;
