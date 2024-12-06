@@ -12,8 +12,8 @@ let
 in
 with lib;
 {
-  meta.maintainers = [ maintainers.FloodCreux ];
-
+  # meta.maintainers = [ maintainers.FloodCreux ];
+  #
   options.programs.neovim-ide = {
     enable = mkEnableOption "NeoVim with LSP enabled for Scala, Haskell, Rust and more.";
 

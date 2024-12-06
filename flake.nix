@@ -246,6 +246,7 @@
         homeManagerModules = {
           default = {
             imports = [
+              ./lib/hm.nix
               { nixpkgs.overlays = [ overlays.default ]; }
             ];
           };
@@ -254,9 +255,9 @@
         packages = {
           default = default-ide.full.neovim;
 
-          docs = docbook.html;
-          docs-json = searchdocs.json;
-          docs-search = searchdocs.html;
+          # docs = docbook.html;
+          # docs-json = searchdocs.json;
+          # docs-search = searchdocs.html;
 
           ts-scala = pkgs.tree-sitter-scala-master;
           inherit (pkgs) metals;
