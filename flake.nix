@@ -236,9 +236,11 @@
           default = nvim;
         };
 
-        overlays.default = f: p: {
-          inherit metalsBuilder neovimBuilder;
-          inherit (pkgs) neovim-nightly neovimPlugins;
+        overlays = {
+          default = f: p: {
+            inherit metalsBuilder neovimBuilder;
+            inherit (pkgs) neovim-nightly neovimPlugins;
+          };
         };
 
         homeManagerModules.default = {
