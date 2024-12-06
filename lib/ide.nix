@@ -53,6 +53,8 @@ let
         enable = true;
         ai.enable = true;
         icons.enable = true;
+        indentScope.enable = true;
+        hipatterns.enable = true;
         statusLine.enable = true;
         surround.enable = true;
       };
