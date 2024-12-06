@@ -76,8 +76,9 @@
       flake = false;
     };
 
-    mini-icons = {
-      url = "github:echasnovski/mini.icons";
+    # mini
+    mini = {
+      url = "github:echasnovski/mini.nvim";
       flake = false;
     };
 

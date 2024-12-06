@@ -49,6 +49,13 @@ let
           };
         };
       };
+      mini = {
+        enable = true;
+        ai.enable = true;
+        icons.enable = true;
+        statusLine.enable = true;
+        surround.enable = true;
+      };
       telescope = {
         enable = true;
         tabs.enable = true;
@@ -63,10 +70,6 @@ let
         enable = true;
         autotagHtml = true;
         context.enable = true;
-      };
-      visuals = {
-        enable = true;
-        miniIcons.enable = true;
       };
     };
   };
