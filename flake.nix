@@ -208,11 +208,15 @@
             pluginOverlay
             metalsOverlay
             neovimOverlay
+            # nmdOverlay
+            # nixdOverlay
             tsOverlay
           ];
         };
 
-        default-ide = pkgs.callPackage ./lib/ide.nix { inherit pkgs neovimBuilder; };
+        default-ide = pkgs.callPackage ./lib/ide.nix {
+          inherit pkgs neovimBuilder;
+        };
 
         searchdocs = pkgs.callPackage ./docs/search { };
 
