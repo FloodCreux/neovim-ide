@@ -73,6 +73,11 @@ let
         autotagHtml = true;
         context.enable = true;
       };
+      visuals = {
+        enable = true;
+        noice.enable = true;
+        nvimWebDevIcons.enable = true;
+      };
     };
   };
 

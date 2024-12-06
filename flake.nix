@@ -118,6 +118,11 @@
       flake = false;
     };
 
+    nui-nvim = {
+      url = "github:MunifTanjim/nui.nvim";
+      flake = false;
+    };
+
     # Keybinding
     which-key = {
       url = "github:folke/which-key.nvim";

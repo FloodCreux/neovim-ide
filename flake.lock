@@ -331,6 +331,22 @@
         "type": "github"
       }
     },
+    "nui-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1726376728,
+        "narHash": "sha256-90Wq+vT361mTaGU/SvAezqJkX9HHmZ2GI2fKBDxPn04=",
+        "owner": "MunifTanjim",
+        "repo": "nui.nvim",
+        "rev": "b58e2bfda5cea347c9d58b7f11cf3012c7b3953f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "MunifTanjim",
+        "repo": "nui.nvim",
+        "type": "github"
+      }
+    },
     "nvim-lspconfig": {
       "flake": false,
       "locked": {
@@ -487,6 +503,7 @@
         "nightfox": "nightfox",
         "nixpkgs": "nixpkgs",
         "noice": "noice",
+        "nui-nvim": "nui-nvim",
         "nvim-lspconfig": "nvim-lspconfig",
         "nvim-metals": "nvim-metals",
         "nvim-treesitter": "nvim-treesitter",

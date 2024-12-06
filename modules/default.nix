@@ -11,5 +11,6 @@
     ./telescope
     ./theme
     ./treesitter
+    ./visuals
   ];
 }
