@@ -12,6 +12,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nixd.url = "github:nix-community/nixd";
+
     nvim-metals = {
       url = "github:scalameta/nvim-metals";
       flake = false;
@@ -106,6 +108,17 @@
 
     lazygit = {
       url = "github:kdheepak/lazygit.nvim";
+      flake = false;
+    };
+
+    # File Trees
+    yazi = {
+      url = "github:DreamMaoMao/yazi.nvim";
+      flake = false;
+    };
+
+    oil = {
+      url = "github:stevearc/oil.nvim";
       flake = false;
     };
 
@@ -219,6 +232,10 @@
           neovim-nightly = inputs.neovim-nightly-overlay.packages.${system}.neovim;
         };
 
+        nixdOverlay = f: p: {
+          inherit (inputs.nixd.pacakges.${system}) nixd;
+        };
+
         pkgs = import nixpkgs {
           inherit system;
           config = {
@@ -230,7 +247,7 @@
             metalsOverlay
             neovimOverlay
             # nmdOverlay
-            # nixdOverlay
+            nixdOverlay
             tsOverlay
           ];
         };

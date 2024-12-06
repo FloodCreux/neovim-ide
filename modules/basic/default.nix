@@ -153,7 +153,7 @@ in
 
   config = {
     vim.colourTerm = mkDefault true;
-    vim.disableArrows = true;
+    vim.disableArrows = false;
     vim.hideSearchHighlight = mkDefault false;
     vim.scrollOffset = mkDefault 8;
     vim.wordWrap = mkDefault true;
@@ -161,7 +161,7 @@ in
     vim.mapClearHighlight = mkDefault true;
     vim.mapLeaderSpace = mkDefault true;
     vim.useSystemClipboard = mkDefault true;
-    vim.mouseSupport = mkDefault "v";
+    vim.mouseSupport = mkDefault "a";
     vim.lineNumberMode = mkDefault "relNumber";
     vim.preventJunkFiles = mkDefault false;
     vim.tabWidth = mkDefault 2;

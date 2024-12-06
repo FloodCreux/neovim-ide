@@ -3,6 +3,7 @@
   imports = [
     ./basic
     ./core
+    ./filetree
     ./format
     ./git
     ./keys

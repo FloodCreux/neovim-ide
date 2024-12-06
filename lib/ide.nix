@@ -18,6 +18,10 @@ let
         vim-repeat
       ];
       mapLeaderSpace = true;
+      filetree = {
+        enable = true;
+        yazi.enable = true;
+      };
       format = {
         conform = {
           enable = true;

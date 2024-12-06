@@ -10,7 +10,6 @@ with builtins;
 
 let
   cfg = config.vim.git;
-  keys = config.vim.keys.whichKey;
 in
 {
   options.vim.git = {
