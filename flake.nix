@@ -88,6 +88,27 @@
       flake = false;
     };
 
+    # Git
+    vim-fugitive = {
+      url = "github:tpope/vim-fugitive";
+      flake = false;
+    };
+
+    gitsigns-nvim = {
+      url = "github:lewis6991/gitsigns.nvim";
+      flake = false;
+    };
+
+    diffview = {
+      url = "github:sindrets/diffview.nvim";
+      flake = false;
+    };
+
+    lazygit = {
+      url = "github:kdheepak/lazygit.nvim";
+      flake = false;
+    };
+
     # Themes
     catppuccin = {
       url = "github:catppuccin/nvim";

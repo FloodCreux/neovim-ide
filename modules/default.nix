@@ -4,6 +4,7 @@
     ./basic
     ./core
     ./format
+    ./git
     ./keys
     ./lsp
     ./mini

@@ -23,6 +23,12 @@ let
           enable = true;
         };
       };
+      git = {
+        enable = true;
+
+        gitsigns.enable = true;
+        lazygit.enable = true;
+      };
       keys = {
         enable = true;
         whichKey.enable = true;

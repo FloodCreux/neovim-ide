@@ -11,7 +11,9 @@ let
   cfg = config.programs.neovim-ide;
   set = neovimBuilder { config = cfg.settings; };
 in
+
 with lib;
+
 {
   # meta.maintainers = [ maintainers.FloodCreux ];
   #

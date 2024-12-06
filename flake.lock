@@ -32,6 +32,22 @@
         "type": "github"
       }
     },
+    "diffview": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1718279802,
+        "narHash": "sha256-SX+ybIzL/w6uyCy4iZKnWnzTFwqB1oXSgyYVAdpdKi8=",
+        "owner": "sindrets",
+        "repo": "diffview.nvim",
+        "rev": "4516612fe98ff56ae0415a259ff6361a89419b0a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "sindrets",
+        "repo": "diffview.nvim",
+        "type": "github"
+      }
+    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -188,6 +204,22 @@
         "type": "github"
       }
     },
+    "gitsigns-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1732361574,
+        "narHash": "sha256-H7A+AxioiedSuC+jqRwP4c7DjZR/0j4o/fTUasT2urc=",
+        "owner": "lewis6991",
+        "repo": "gitsigns.nvim",
+        "rev": "5f808b5e4fef30bd8aca1b803b4e555da07fc412",
+        "type": "github"
+      },
+      "original": {
+        "owner": "lewis6991",
+        "repo": "gitsigns.nvim",
+        "type": "github"
+      }
+    },
     "gruber-darker": {
       "flake": false,
       "locked": {
@@ -223,6 +255,22 @@
       "original": {
         "owner": "hercules-ci",
         "repo": "hercules-ci-effects",
+        "type": "github"
+      }
+    },
+    "lazygit": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1733512494,
+        "narHash": "sha256-MTzO9GBVV4pGfB7Jk5wo5je+t4u9n/T/QLbfJfsa3Rg=",
+        "owner": "kdheepak",
+        "repo": "lazygit.nvim",
+        "rev": "02a7a2789fe9e660ef72bec27df342b15bcca6b7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "kdheepak",
+        "repo": "lazygit.nvim",
         "type": "github"
       }
     },
@@ -495,9 +543,12 @@
       "inputs": {
         "catppuccin": "catppuccin",
         "conform": "conform",
+        "diffview": "diffview",
         "flake-schemas": "flake-schemas",
         "flake-utils": "flake-utils",
+        "gitsigns-nvim": "gitsigns-nvim",
         "gruber-darker": "gruber-darker",
+        "lazygit": "lazygit",
         "mini": "mini",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nightfox": "nightfox",
@@ -520,6 +571,7 @@
         "tokyonight": "tokyonight",
         "tree-sitter-scala": "tree-sitter-scala",
         "trouble": "trouble",
+        "vim-fugitive": "vim-fugitive",
         "which-key": "which-key"
       }
     },
@@ -647,6 +699,22 @@
       "original": {
         "owner": "folke",
         "repo": "trouble.nvim",
+        "type": "github"
+      }
+    },
+    "vim-fugitive": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1732036604,
+        "narHash": "sha256-RGS2T6tHuFPZROU0W4Z6j6wMEiJmd8xuKv3qqM3XHPI=",
+        "owner": "tpope",
+        "repo": "vim-fugitive",
+        "rev": "320b18fba2a4f2fe3c8225c778c687e0d2620384",
+        "type": "github"
+      },
+      "original": {
+        "owner": "tpope",
+        "repo": "vim-fugitive",
         "type": "github"
       }
     },
