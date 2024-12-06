@@ -210,6 +210,22 @@
         "type": "github"
       }
     },
+    "mini-icons": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1731247176,
+        "narHash": "sha256-YaDCefOUBpgVpBC+xCbk8kDqyFaMbPphsJsoubx36vw=",
+        "owner": "echasnovski",
+        "repo": "mini.icons",
+        "rev": "54686be7d58807906cb2c8c2216e0bf9c044f19a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "echasnovski",
+        "repo": "mini.icons",
+        "type": "github"
+      }
+    },
     "neovim-nightly-overlay": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -449,6 +465,7 @@
         "flake-schemas": "flake-schemas",
         "flake-utils": "flake-utils",
         "gruber-darker": "gruber-darker",
+        "mini-icons": "mini-icons",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nightfox": "nightfox",
         "nixpkgs": "nixpkgs",

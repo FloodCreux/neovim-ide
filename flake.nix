@@ -70,6 +70,11 @@
       flake = false;
     };
 
+    mini-icons = {
+      url = "github:echasnovski/mini.icons";
+      flake = false;
+    };
+
     # Themes
     catppuccin = {
       url = "github:catppuccin/nvim";

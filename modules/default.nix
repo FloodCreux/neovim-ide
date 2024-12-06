@@ -9,5 +9,6 @@
     ./telescope
     ./theme
     ./treesitter
+    ./visuals
   ];
 }

@@ -59,6 +59,10 @@ let
         autotagHtml = true;
         context.enable = true;
       };
+      visuals = {
+        enable = true;
+        miniIcons.enable = true;
+      };
     };
   };
 
