@@ -12,7 +12,7 @@ let
 in
 with lib;
 {
-  meta.maintainers = [ maintainers.gvolpe ];
+  meta.maintainers = [ maintainers.FloodCreux ];
 
   options.programs.neovim-ide = {
     enable = mkEnableOption "NeoVim with LSP enabled for Scala, Haskell, Rust and more.";
