@@ -178,13 +178,33 @@
   };
 
   outputs =
-    inputs@{ nixpkgs, flake-utils, ... }:
+    inputs@{
+      nixpkgs,
+      flake-utils,
+      ...
+    }:
     {
       inherit (inputs.flake-schema) schemas;
     }
     // flake-utils.lib.eachDefaultSystem (
       system:
       let
+        pkgs = import nixpkgs {
+          inherit system;
+          config = {
+            allowUnfree = true;
+          };
+          overlays = [
+            libOverlay
+            pluginOverlay
+            metalsOverlay
+            neovimOverlay
+            # nmdOverlay
+            nixdOverlay
+            tsOverlay
+          ];
+        };
+
         plugins =
           let
             f = xs: pkgs.lib.attrsets.filterAttrs (k: v: !builtins.elem k xs);
@@ -233,40 +253,24 @@
         };
 
         nixdOverlay = f: p: {
-          inherit (inputs.nixd.pacakges.${system}) nixd;
+          inherit (inputs.nixd.packages.${system}) nixd;
         };
 
-        pkgs = import nixpkgs {
-          inherit system;
-          config = {
-            allowUnfree = true;
-          };
-          overlays = [
-            libOverlay
-            pluginOverlay
-            metalsOverlay
-            neovimOverlay
-            # nmdOverlay
-            nixdOverlay
-            tsOverlay
-          ];
-        };
+        # searchdocs = pkgs.callPackage ./docs/search { };
+        #
+        # docbook =
+        #   with import ./docs {
+        #     inherit pkgs;
+        #     inherit (pkgs) lib;
+        #   }; {
+        #     inherit manPages jsonModuleMaintainers;
+        #     inherit (manual) html;
+        #     inherit (options) json;
+        #   };
 
         default-ide = pkgs.callPackage ./lib/ide.nix {
           inherit pkgs neovimBuilder;
         };
-
-        searchdocs = pkgs.callPackage ./docs/search { };
-
-        docbook =
-          with import ./docs {
-            inherit pkgs;
-            inherit (pkgs) lib;
-          }; {
-            inherit manPages jsonModuleMaintainers;
-            inherit (manual) html;
-            inherit (options) json;
-          };
       in
       rec {
         apps = rec {
@@ -281,9 +285,10 @@
         overlays.default = f: p: {
           inherit metalsBuilder neovimBuilder;
           inherit (pkgs) neovim-nightly neovimPlugins;
+          lib = p.lib;
         };
 
-        homeManagerModules.default = {
+        homeManagerModules.nvim = {
           imports = [
             ./lib/hm.nix
             { nixpkgs.overlays = [ overlays.default ]; }
@@ -291,7 +296,7 @@
         };
 
         packages = {
-          default = default-ide.full.neovim;
+          default = default-ide.full-nightly.neovim;
 
           # docs = docbook.html;
           # docs-json = searchdocs.json;
