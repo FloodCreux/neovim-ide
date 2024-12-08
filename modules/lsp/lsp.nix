@@ -23,6 +23,19 @@ in
     folds = mkEnableOption "Folds via nvim-ufo";
     formatOnSave = mkEnableOption "Format on save";
 
+    nix = {
+      enable = mkEnableOption "Nix LSP";
+      type = mkOption {
+        type = types.enum [
+          "nixd"
+          "nil"
+          "rnix-lsp"
+        ];
+        default = "nil";
+        description = "Whether to use `nixd`, `nil`, or `rnix-lsp`";
+      };
+    };
+
     scala = {
       enable = mkEnableOption "Scala LSP (Metals)";
       metals = {
@@ -59,58 +72,132 @@ in
       with pkgs.neovimPlugins;
       [ nvim-lspconfig ] ++ (withPlugins cfg.scala.enable [ nvim-metals ]);
 
-    vim.configRC = '''';
+    vim.configRC = ''
+      ${writeIf cfg.nix.enable ''
+        autocmd filetype nix setlocal tabstop=2 shiftwidth=2 softtabstop=2
+      ''}
+    '';
 
     vim.luaConfigRC = ''
-      local attach_keymaps = function(client, bufnr)
-        ${writeIf cfg.scala.enable ''
-          -- Metals specific
-          vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>lmc', '<cmd>lua require("metals").commands()<CR>', opts)
-          vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>lmi', '<cmd>lua require("metals").toggle_setting("showImplicitArguments")<CR>', opts)
-        ''}
-      end
+       local attach_keymaps = function(client, bufnr)
+         ${writeIf cfg.scala.enable ''
+           -- Metals specific
+           vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>lmc', '<cmd>lua require("metals").commands()<CR>', opts)
+           vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>lmi', '<cmd>lua require("metals").toggle_setting("showImplicitArguments")<CR>', opts)
+         ''}
+       end
 
-      vim.g.formatsave = ${if cfg.formatOnSave then "true" else "false"};
+       vim.g.formatsave = ${if cfg.formatOnSave then "true" else "false"};
 
-      ${writeIf cfg.scala.enable ''
-        -- Scala nvim-metals config
-        metals_config = require('metals').bare_config()
-        metals_config.capabilities = capabilities
-        metals_config.on_attach = default_on_attach
+       -- Enable formatting
+       format_callback = function(client, bufnr)
+         vim.api.nvim_create_autocmd("BufWritePre", {
+           group = augroup,
+           buffer = bufnr,
+           callback = function()
+             if vim.g.formatsave then
+                 local params = require'vim.lsp.util'.make_formatting_params({})
+                 client.request('textDocument/formatting', params, nil, bufnr)
+             end
+           end
+         })
+       end
 
-        metals_config.settings = {
-           metalsBinaryPath = "${cfg.scala.metals.package}/bin/metals",
-           autoImportBuild = "off",
-           defaultBspToBuildTool = true,
-           showImplicitArguments = true,
-           showImplicitConversionsAndClasses = true,
-           showInferredType = true,
-           superMethodLensesEnabled = true,
-           excludedPackages = {
-             "akka.actor.typed.javadsl",
-             "com.github.swagger.akka.javadsl"
-           },
-           serverProperties = {
-             ${metalsServerProperties}
-           }
+       default_on_attach = function(client, bufnr)
+         attach_keymaps(client, bufnr)
+         format_callback(client, bufnr)
+       end
+
+       -- Enable lspconfig
+       local lspconfig = require('lspconfig')
+
+       local capabilities = vim.lsp.protocol.make_client_capabilities()
+
+      ${writeIf (cfg.nix.enable && cfg.nix.type == "nixd") ''
+        -- Nix config
+        lspconfig.nixd.setup{
+          capabilities = capabilities;
+          on_attach = function(client, bufnr)
+            attach_keymaps(client, bufnr)
+          end,
+          cmd = {"${pkgs.nixd}/bin/nixd"}
         }
+      ''}
 
-        metals_config.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-          vim.lsp.diagnostic.on_publish_diagnostics, {
-            virtual_text = {
-              prefix = '',
+       ${writeIf (cfg.nix.enable && cfg.nix.type == "nil") ''
+         -- Nix config
+         lspconfig.nil_ls.setup{
+           capabilities = capabilities;
+           on_attach = function(client, bufnr)
+             attach_keymaps(client, bufnr)
+           end,
+           settings = {
+             ['nil'] = {
+               formatting = {
+                 command = {"${pkgs.nixpkgs-fmt}/bin/nixpkgs-fmt"}
+               },
+               diagnostics = {
+                 ignored = { "uri_literal" },
+                 excludedFiles = { }
+               }
+             }
+           };
+           cmd = {"${pkgs.nil}/bin/nil"}
+         }
+       ''}
+
+       ${
+         writeIf (cfg.nix.enable && cfg.nix.type == "rnix-lsp") ''
+           -- Nix config
+           lspconfig.rnix.setup{
+             capabilities = capabilities;
+             on_attach = function(client, bufnr)
+               attach_keymaps(client, bufnr)
+             end,
+             cmd = {"${pkgs.rnix-lsp}/bin/rnix-lsp"}
+           }
+         ''
+       } 
+
+       ${writeIf cfg.scala.enable ''
+         -- Scala nvim-metals config
+         metals_config = require('metals').bare_config()
+         metals_config.capabilities = capabilities
+         metals_config.on_attach = default_on_attach
+
+         metals_config.settings = {
+            metalsBinaryPath = "${cfg.scala.metals.package}/bin/metals",
+            autoImportBuild = "off",
+            defaultBspToBuildTool = true,
+            showImplicitArguments = true,
+            showImplicitConversionsAndClasses = true,
+            showInferredType = true,
+            superMethodLensesEnabled = true,
+            excludedPackages = {
+              "akka.actor.typed.javadsl",
+              "com.github.swagger.akka.javadsl"
+            },
+            serverProperties = {
+              ${metalsServerProperties}
             }
-          }
-        )
+         }
 
-        -- without doing this, autocommands that deal with filetypes prohibit messages from being shown
-        vim.opt_global.shortmess:remove("F")
+         metals_config.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+           vim.lsp.diagnostic.on_publish_diagnostics, {
+             virtual_text = {
+               prefix = '',
+             }
+           }
+         )
 
-        vim.cmd([[augroup lsp]])
-        vim.cmd([[autocmd!]])
-        vim.cmd([[autocmd FileType java,scala,sbt lua require('metals').initialize_or_attach(metals_config)]])
-        vim.cmd([[augroup end]])
-      ''}  
+         -- without doing this, autocommands that deal with filetypes prohibit messages from being shown
+         vim.opt_global.shortmess:remove("F")
+
+         vim.cmd([[augroup lsp]])
+         vim.cmd([[autocmd!]])
+         vim.cmd([[autocmd FileType java,scala,sbt lua require('metals').initialize_or_attach(metals_config)]])
+         vim.cmd([[augroup end]])
+       ''}  
     '';
   };
 }

@@ -42,6 +42,10 @@ let
         folds = true;
         formatOnSave = false;
 
+        nix = {
+          enable = true;
+        };
+
         scala = {
           enable = true;
           metals = {
