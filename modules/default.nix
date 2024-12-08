@@ -1,8 +1,10 @@
 { ... }:
 {
   imports = [
+    ./autopairs
     ./basic
     ./core
+    ./completion
     ./filetree
     ./format
     ./git

@@ -36,6 +36,12 @@ in
       };
     };
 
+    rust = {
+      enable = mkEnableOption "Rust LSP";
+      default = false;
+      description = "Enable the Rust LSP";
+    };
+
     scala = {
       enable = mkEnableOption "Scala LSP (Metals)";
       metals = {

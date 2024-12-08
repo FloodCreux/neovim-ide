@@ -13,6 +13,12 @@ let
       vimAlias = true;
       preventJunkFiles = true;
       cmdHeight = 2;
+      autocomplete = {
+        enable = true;
+      };
+      autopairs = {
+        enable = true;
+      };
       customPlugins = with pkgs.vimPlugins; [
         multiple-cursors
         vim-repeat
