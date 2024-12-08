@@ -153,6 +153,7 @@
       flake = false;
     };
 
+    # Visuals
     noice = {
       url = "github:folke/noice.nvim";
       flake = false;
@@ -161,6 +162,12 @@
     # noice dep
     nui-nvim = {
       url = "github:MunifTanjim/nui.nvim";
+      flake = false;
+    };
+
+    # Notifications
+    snacks = {
+      url = "github:folke/snacks.nvim";
       flake = false;
     };
 
@@ -256,18 +263,6 @@
           inherit (inputs.nixd.packages.${system}) nixd;
         };
 
-        # searchdocs = pkgs.callPackage ./docs/search { };
-        #
-        # docbook =
-        #   with import ./docs {
-        #     inherit pkgs;
-        #     inherit (pkgs) lib;
-        #   }; {
-        #     inherit manPages jsonModuleMaintainers;
-        #     inherit (manual) html;
-        #     inherit (options) json;
-        #   };
-
         default-ide = pkgs.callPackage ./lib/ide.nix {
           inherit pkgs neovimBuilder;
         };
@@ -297,10 +292,6 @@
 
         packages = {
           default = default-ide.full-nightly.neovim;
-
-          # docs = docbook.html;
-          # docs-json = searchdocs.json;
-          # docs-search = searchdocs.html;
 
           ts-scala = pkgs.tree-sitter-scala-master;
           inherit (pkgs) metals;

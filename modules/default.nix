@@ -10,6 +10,7 @@
     ./lsp
     ./mini
     ./neovim
+    ./notifications
     ./telescope
     ./theme
     ./treesitter

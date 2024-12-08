@@ -70,6 +70,9 @@ let
         statusLine.enable = true;
         surround.enable = true;
       };
+      notifications = {
+        enable = true;
+      };
       telescope = {
         enable = true;
         tabs.enable = true;
