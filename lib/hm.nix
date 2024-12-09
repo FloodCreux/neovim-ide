@@ -61,11 +61,6 @@ with lib;
   config = mkIf cfg.enable {
     home.packages = [ set.neovim ];
 
-    home.file."img/neovim-logo.png" = {
-      source = ../img/neovim-logo.png;
-      executable = true;
-    };
-
     programs.neovim-ide.finalPackage = set.neovim;
   };
 }
