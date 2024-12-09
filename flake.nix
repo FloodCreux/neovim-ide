@@ -14,6 +14,16 @@
 
     nixd.url = "github:nix-community/nixd";
 
+    rust-tools = {
+      url = "github:simrat39/rust-tools.nvim";
+      flake = false;
+    };
+
+    crates-nvim = {
+      url = "github:Saecki/crates.nvim";
+      flake = false;
+    };
+
     nvim-metals = {
       url = "github:scalameta/nvim-metals";
       flake = false;

@@ -49,11 +49,14 @@ let
         enable = true;
         folds = true;
         formatOnSave = false;
-
+        clang = true;
+        go = true;
         nix = {
           enable = true;
         };
-
+        rust = {
+          enable = true;
+        };
         scala = {
           enable = true;
           metals = {

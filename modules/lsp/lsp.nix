@@ -9,7 +9,6 @@ with builtins;
 
 let
   cfg = config.vim.lsp;
-  keys = config.vim.keys.whichKey;
 
   metalsServerProperties =
     let
@@ -22,6 +21,10 @@ in
     enable = mkEnableOption "neovim lsp support";
     folds = mkEnableOption "Folds via nvim-ufo";
     formatOnSave = mkEnableOption "Format on save";
+
+    clang = mkEnableOption "C language LSP";
+
+    go = mkEnableOption "Go language LSP";
 
     nix = {
       enable = mkEnableOption "Nix LSP";
@@ -40,6 +43,17 @@ in
       enable = mkEnableOption "Rust LSP";
       default = false;
       description = "Enable the Rust LSP";
+      rustAnalyzerOpts = mkOption {
+        type = types.str;
+        default = ''
+          ["rust-analyzer"] = {
+            experimental = {
+              procAttrMacros = true,
+            },
+          },
+        '';
+        description = "options to pass to rust analyzer";
+      };
     };
 
     scala = {
@@ -76,12 +90,38 @@ in
   config = mkIf cfg.enable {
     vim.startPlugins =
       with pkgs.neovimPlugins;
-      [ nvim-lspconfig ] ++ (withPlugins cfg.scala.enable [ nvim-metals ]);
+      [ nvim-lspconfig ]
+      ++ (withPlugins cfg.rust.enable [
+        crates-nvim
+        rust-tools
+      ])
+      ++ (withPlugins cfg.scala.enable [ nvim-metals ]);
 
     vim.configRC = ''
+      ${writeIf cfg.clang ''
+        " c syntax for header(otherwise breaks treesitter highlights)
+        let g:c_syntax_for_h = 1
+      ''}
+
       ${writeIf cfg.nix.enable ''
         autocmd filetype nix setlocal tabstop=2 shiftwidth=2 softtabstop=2
       ''}
+
+       ${writeIf cfg.rust.enable ''
+          function! MapRustTools()
+            nnoremap <silent><leader>r1 <cmg>lua require('rust-tools.inlay_hints').toggle_inlay_hints()<CR>
+            nnoremap <silent><leader>rr <cmd>lua require('rust-tools.runnables').runnables()<CR>
+            nnoremap <silent><leader>re <cmd>lua require('rust-tools.expand_macro').expand_macro()<CR>
+            nnoremap <silent><leader>rc <cmd>lua require('rust-tools.open_cargo_toml').open_cargo_toml()<CR>
+            nnoremap <silent><leader>rg <cmd>lua require('rust-tools.crate_graph').view_crate_graph('x11', nil)<CR>
+          endfunction
+
+         autocmd filetype rust nnoremap <silent><leader>ri <cmd>lua require('rust-tools.inlay_hints').toggle_inlay_hints()<CR>
+         autocmd filetype rust nnoremap <silent><leader>rr <cmd>lua require('rust-tools.runnables').runnables()<CR>
+         autocmd filetype rust nnoremap <silent><leader>re <cmd>lua require('rust-tools.expand_macro').expand_macro()<CR>
+         autocmd filetype rust nnoremap <silent><leader>rc <cmd>lua require('rust-tools.open_cargo_toml').open_cargo_toml()<CR>
+         autocmd filetype rust nnoremap <silent><leader>rg <cmd>lua require('rust-tools.crate_graph').view_crate_graph('x11', nil)<CR>
+       ''}
     '';
 
     vim.luaConfigRC = ''
@@ -141,6 +181,24 @@ in
 
        local capabilities = vim.lsp.protocol.make_client_capabilities()
 
+       ${writeIf cfg.clang ''
+         -- CCLS (clang) config
+         lspconfig.ccls.setup {
+           capabilities = capabilities;
+           on_attach = default_on_attach;
+           cmd = {"${pkgs.ccls}/bin/ccls"}
+         }
+       ''}
+
+       ${writeIf cfg.go ''
+         -- Go config
+         lspconfig.gopls.setup {
+           capabilities = capabilities;
+           on_attach = default_on_attach;
+           cmd = {"${pkgs.gopls}/bin/gopls", "serve"},
+         }
+       ''}
+
       ${writeIf (cfg.nix.enable && cfg.nix.type == "nixd") ''
         -- Nix config
         lspconfig.nixd.setup{
@@ -186,6 +244,31 @@ in
            }
          ''
        } 
+
+       ${writeIf cfg.rust.enable ''
+         -- Rust config
+
+         local rustopts = {
+           tools = {
+             autoSetHints = true,
+             hover_with_actions = false,
+             inlay_hints = {
+               only_current_line = false
+             }
+           },
+           server = {
+             capabilities = capabilities,
+             on_attach = default_on_attach,
+             cmd = {"${pkgs.rust-analyzer}/bin/rust-analyzer"},
+             settings = {
+               ${cfg.rust.rustAnalyzerOpts}
+             }
+           }
+         }
+
+         require('crates').setup {}
+         require('rust-tools').setup(rustopts)
+       ''}
 
        ${writeIf cfg.scala.enable ''
          -- Scala nvim-metals config
