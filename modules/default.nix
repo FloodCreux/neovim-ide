@@ -10,6 +10,7 @@
     ./git
     ./keys
     ./lsp
+    ./markdown
     ./mini
     ./neovim
     ./notifications

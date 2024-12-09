@@ -215,6 +215,12 @@
       flake = false;
     };
 
+    # Markdown
+    render-markdown-nvim = {
+      url = "github:MeanderingProgrammer/render-markdown.nvim";
+      flake = false;
+    };
+
     # Dependency of other plugins
     plenary-nvim = {
       url = "github:nvim-lua/plenary.nvim";
