@@ -113,6 +113,18 @@ in
       description = "Show the sign column";
     };
 
+    colorColumn = {
+      enable = mkOption {
+        type = types.bool;
+        description = "enable color column";
+      };
+
+      column = mkOption {
+        type = types.int;
+        description = "the column number to color";
+      };
+    };
+
     bell = mkOption {
       type = types.enum [
         "none"
@@ -187,6 +199,7 @@ in
     vim.spellCheck.markdown = mkDefault true;
     vim.guicursor = mkDefault "";
     vim.cursorline = mkDefault true;
+    vim.colorColumn.enable = mkDefault false;
 
     vim.startPlugins = [ pkgs.neovimPlugins.plenary-nvim ] ++ cfg.customPlugins;
 
@@ -298,6 +311,9 @@ in
       ''}
       ${writeIf cfg.cursorline ''
         set cursorline
+      ''}
+      ${writeIf cfg.colorColumn.enable ''
+        set colorcolumn=${toString cfg.colorColumn.column}
       ''}
     '';
   };
