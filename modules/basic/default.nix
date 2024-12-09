@@ -233,7 +233,7 @@ in
       set tm=${toString cfg.mapTimeout}
       set hidden
       set guicursor=${toString cfg.guicursor}
-      set scrolloffset=${toString cfg.scrollOffset}
+      set scrolloff=${toString cfg.scrollOffset}
       ${writeIf cfg.splitBelow ''
         set splitbelow
       ''}
