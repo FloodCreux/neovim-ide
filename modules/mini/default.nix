@@ -23,6 +23,13 @@ in
       };
     };
 
+    completion = {
+      enable = mkOption {
+        type = types.bool;
+        description = "enable mini completion";
+      };
+    };
+
     icons = {
       enable = mkOption {
         type = types.bool;
@@ -71,6 +78,10 @@ in
         --  - yinq - [Y]ank [I]nside [N]ext [']quote
         --  - ci'  - [C]hange [I]nside [']quote
         require('mini.ai').setup { n_lines = 500 }
+      ''}
+
+      ${writeIf cfg.completion.enable ''
+        require("mini.completion").setup{}
       ''}
 
       ${writeIf cfg.icons.enable ''

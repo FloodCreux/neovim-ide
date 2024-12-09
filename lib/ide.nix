@@ -81,6 +81,7 @@ let
       mini = {
         enable = true;
         ai.enable = true;
+        completion.enable = true;
         icons.enable = true;
         indentScope.enable = true;
         hipatterns.enable = true;
@@ -89,6 +90,9 @@ let
       };
       notifications = {
         enable = true;
+      };
+      snippets = {
+        vsnip.enable = true;
       };
       telescope = {
         enable = true;
