@@ -42,6 +42,7 @@ in
       end
 
       local cmp = require'cmp'
+
       cmp.setup({
         snippet = {
           expand = function(args)
@@ -57,36 +58,46 @@ in
           { name = 'buffer' },
         },
         mapping = {
-          ['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
-          ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c'}),
-          ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c'}),
-          ['<C-y>'] = cmp.config.disable,
-          ['<C-e>'] = cmp.mapping({
-            i = cmp.mapping.abort(),
-            c = cmp.mapping.close(),
-          }),
-          ['<CR>'] = cmp.mapping.confirm({
-            select = true,
-          }),
-          ['<C-Tab>'] = cmp.mapping(function (fallback)
-            if cmp.visible() then
-              cmp.select_next_item()
-            elseif vim.fn['vsnip#available'](1) == 1 then
-              feedkey("<Plug>(vsnip-expand-or-jump)", "")
-            elseif has_words_before() then
-              cmp.complete()
-            else
-              fallback()
+          -- Select the [n]ext item
+          ['<C-n>'] = cmp.mapping.select_next_item(),
+          -- Select the [p]revious item
+          ['<C-p>'] = cmp.mapping.select_prev_item(),
+
+          -- Scroll the documentation window [b]ack / [f]orward
+          ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+          ['<C-f>'] = cmp.mapping.scroll_docs(4),
+
+          -- Accept ([y]es) the completion.
+          --  This will auto-import if your LSP supports it.
+          --  This will expand snippets if the LSP sent a snippet.
+          ['<C-y>'] = cmp.mapping.confirm { select = true },
+
+          -- Manually trigger a completion from nvim-cmp.
+          --  Generally you don't need this, because nvim-cmp will display
+          --  completions whenever it has completion options available.
+          ['<C-Space>'] = cmp.mapping.complete {},
+
+          -- Think of <c-l> as moving to the right of your snippet expansion.
+          --  So if you have a snippet that's like:
+          --  function $name($args)
+          --    $body
+          --  end
+          --
+          -- <c-l> will move you to the right of each of the expansion locations.
+          -- <c-h> is similar, except moving you backwards.
+          ['<C-k>'] = cmp.mapping(function()
+            if luasnip.expand_or_locally_jumpable() then
+              luasnip.expand_or_jump()
+            end
+          end, { 'i', 's' }),
+          ['<C-j>'] = cmp.mapping(function()
+            if luasnip.locally_jumpable(-1) then
+              luasnip.jump(-1)
             end
           end, { 'i', 's' }),
 
-          ['<S-Tab>'] = cmp.mapping(function (fallback)
-            if cmp.visible() then
-              cmp.select_prev_item()
-            elseif vim.fn['vsnip#available'](-1) == 1 then
-              feedkey("<Plug>(vsnip-jump-prev)", "")
-            end
-          end, { 'i', 's' })
+          -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
+          --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
         },
         completion = {
           completeopt = 'menu,menuone,noinsert',
@@ -98,6 +109,6 @@ in
       ''}
     '';
 
-    # vim.snippets.vsnip.enable = true;
+    vim.snippets.vsnip.enable = true;
   };
 }

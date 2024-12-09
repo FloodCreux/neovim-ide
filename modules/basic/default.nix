@@ -166,7 +166,7 @@ in
     vim.colourTerm = mkDefault true;
     vim.disableArrows = false;
     vim.hideSearchHighlight = mkDefault false;
-    vim.scrollOffset = mkDefault 8;
+    vim.scrollOffset = mkDefault 10;
     vim.wordWrap = mkDefault true;
     vim.syntaxHighlighting = mkDefault true;
     vim.mapClearHighlight = mkDefault true;
