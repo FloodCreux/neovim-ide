@@ -71,6 +71,10 @@ let
 
         trouble.enable = true;
       };
+      markdown = {
+        enable = true;
+        render.enable = true;
+      };
       mini = {
         enable = true;
         ai.enable = true;

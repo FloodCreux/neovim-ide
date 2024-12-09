@@ -149,6 +149,17 @@ in
       default = [ ];
       description = "List of custom scripts";
     };
+
+    cursorline = mkOption {
+      type = types.bool;
+      description = "Enable cursorline";
+    };
+
+    guicursor = mkOption {
+      type = types.str;
+      description = "Set guicursor";
+      default = "";
+    };
   };
 
   config = {
@@ -174,6 +185,8 @@ in
     vim.splitBelow = mkDefault true;
     vim.splitRight = mkDefault true;
     vim.spellCheck.markdown = mkDefault true;
+    vim.guicursor = mkDefault "";
+    vim.cursorline = mkDefault true;
 
     vim.startPlugins = [ pkgs.neovimPlugins.plenary-nvim ] ++ cfg.customPlugins;
 
@@ -219,6 +232,8 @@ in
       set shortmess+=c
       set tm=${toString cfg.mapTimeout}
       set hidden
+      set guicursor=${toString cfg.guicursor}
+      set scrolloffset=${toString cfg.scrollOffset}
       ${writeIf cfg.splitBelow ''
         set splitbelow
       ''}
@@ -280,6 +295,9 @@ in
       ${writeIf cfg.spellCheck.markdown ''
         " Spell check for markdown files
         au BufNewFile,BufRead *.md set spell
+      ''}
+      ${writeIf cfg.cursorline ''
+        set cursorline
       ''}
     '';
   };

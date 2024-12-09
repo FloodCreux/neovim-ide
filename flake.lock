@@ -755,6 +755,22 @@
         "type": "github"
       }
     },
+    "render-markdown-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1733604435,
+        "narHash": "sha256-vAa1PaOsEvk92GlZeOLTE2RdB+gwNjkh0u+wRnvDq6o=",
+        "owner": "MeanderingProgrammer",
+        "repo": "render-markdown.nvim",
+        "rev": "3a08669e9641ba382bc428f1776bff524a2431a1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "MeanderingProgrammer",
+        "repo": "render-markdown.nvim",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "catppuccin": "catppuccin",
@@ -789,6 +805,7 @@
         "oil": "oil",
         "onedark": "onedark",
         "plenary-nvim": "plenary-nvim",
+        "render-markdown-nvim": "render-markdown-nvim",
         "rosepine": "rosepine",
         "snacks": "snacks",
         "telescope": "telescope",
