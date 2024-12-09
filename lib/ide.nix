@@ -35,9 +35,8 @@ let
       };
       git = {
         enable = true;
-
         gitsigns.enable = true;
-        lazygit.enable = true;
+        lazygit.enable = false;
       };
       harpoon = {
         enable = true;
@@ -101,7 +100,8 @@ let
       };
       theme = {
         enable = true;
-        name = "gruber-darker";
+        name = "onedark";
+        style = "deep";
         transparency = true;
       };
       treesitter = {
