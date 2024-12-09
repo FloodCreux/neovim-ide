@@ -55,7 +55,7 @@ in
 
       ${writeIf keys.enable ''
         wk.add({
-          {"<leader>.", function() Snacks.scatch() end, desc = "Toggle Scratch Buffer"},
+          {"<leader>.", function() Snacks.scratch() end, desc = "Toggle Scratch Buffer"},
           {"<leader>nh", function() Snacks.notifier.show_history() end, desc = "Notification History"},
           {"<leader>gg", function() Snacks.lazygit() end, desc = "Lazygit"},
           {"<leader>gl", function() Snacks.lazygit.log() end, desc = "Lazygit Log (cwd)"},
