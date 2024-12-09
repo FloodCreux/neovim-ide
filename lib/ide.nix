@@ -39,6 +39,9 @@ let
         gitsigns.enable = true;
         lazygit.enable = true;
       };
+      harpoon = {
+        enable = true;
+      };
       keys = {
         enable = true;
         whichKey.enable = true;

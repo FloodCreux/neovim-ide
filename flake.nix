@@ -84,6 +84,12 @@
       flake = false;
     };
 
+    # Harpoon
+    harpoon = {
+      url = "github:theprimeagen/harpoon?ref=harpoon2";
+      flake = false;
+    };
+
     # mini
     mini = {
       url = "github:echasnovski/mini.nvim";

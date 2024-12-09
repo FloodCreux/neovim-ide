@@ -42,6 +42,10 @@ in
       [ ] ++ (withPlugins cfg.yazi.enable [ yazi ]) ++ (withPlugins cfg.oil.enable [ oil ]);
 
     vim.luaConfigRC = ''
+      wk.add({
+        {"<leader>p", group = "Explore"},
+      })
+
       ${writeIf cfg.yazi.enable ''
         vim.keymap.set('n', '<leader>pv', '<CMD>Yazi<CR>', { desc = 'Open parent directory' })
       ''}

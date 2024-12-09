@@ -18,15 +18,6 @@ in
   config = mkIf (cfg.enable && cfg.trouble.enable) {
     vim.startPlugins = with pkgs.neovimPlugins; [ trouble ];
 
-    vim.nnoremap = {
-      "<leader>xx" = "<cmd>Trouble diagnostics toggle<cr>";
-      "<leader>xX" = "<cmd>Trouble diagnostics toggle filter.buf=0<cr>";
-      "<leader>cs" = "<cmd>Trouble symbols toggle focus=false<cr>";
-      "<leader>cl" = "<cmd>Trouble lsp toggle focus=false win.position=right<cr>";
-      "<leader>xL" = "<cmd>Trouble loclist toggle<cr>";
-      "<leader>xQ" = "<cmd>Trouble qflist toggle<cr>";
-    };
-
     vim.luaConfigRC = ''
       -- Enable trouble diagnostics viewer
       require("trouble").setup {
@@ -43,12 +34,12 @@ in
              desc = "Buffer Diagnostics (Trouble)",
            },
            {
-             "<leader>cs",
+             "<leader>xs",
              "<cmd>Trouble symbols toggle focus=false<cr>",
              desc = "Symbols (Trouble)",
            },
            {
-             "<leader>cl",
+             "<leader>xl",
              "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
              desc = "LSP Definitions / references / ... (Trouble)",
            },
@@ -65,6 +56,12 @@ in
          },
        ''} 
       }
+
+      ${writeIf keys.enable ''
+        wk.add({
+          {"<leader>x", group = "Trouble"},
+        })
+      ''}
     '';
   };
 }

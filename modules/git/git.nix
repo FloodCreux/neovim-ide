@@ -47,6 +47,10 @@ in
     };
 
     vim.luaConfigRC = ''
+      wk.add({
+        {"<leader>g", group = "Git"},
+      })
+
       ${writeIf cfg.lazygit.enable ''
         require('telescope').load_extension 'lazygit'
       ''}

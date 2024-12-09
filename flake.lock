@@ -349,6 +349,23 @@
         "type": "github"
       }
     },
+    "harpoon": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1731463207,
+        "narHash": "sha256-PjB64kdmoCD7JfUB7Qz9n34hk0h2/ZZRlN8Jv2Z9HT8=",
+        "owner": "theprimeagen",
+        "repo": "harpoon",
+        "rev": "a84ab829eaf3678b586609888ef52f7779102263",
+        "type": "github"
+      },
+      "original": {
+        "owner": "theprimeagen",
+        "ref": "harpoon2",
+        "repo": "harpoon",
+        "type": "github"
+      }
+    },
     "hercules-ci-effects": {
       "inputs": {
         "flake-parts": "flake-parts_2",
@@ -785,6 +802,7 @@
         "flake-utils": "flake-utils",
         "gitsigns-nvim": "gitsigns-nvim",
         "gruber-darker": "gruber-darker",
+        "harpoon": "harpoon",
         "lazygit": "lazygit",
         "mini": "mini",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
