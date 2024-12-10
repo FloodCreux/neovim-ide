@@ -40,6 +40,11 @@
       flake = false;
     };
 
+    omnisharp = {
+      url = "github:OmniSharp/Omnisharp-vim";
+      flake = false;
+    };
+
     # Treesitter
     nvim-treesitter = {
       url = "github:nvim-treesitter/nvim-treesitter";

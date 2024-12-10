@@ -756,6 +756,22 @@
         "type": "github"
       }
     },
+    "omnisharp": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1729218073,
+        "narHash": "sha256-A3cMQbGFcg6hbs5mh97hch5lckzI2ZI0Gglm55hpLvs=",
+        "owner": "OmniSharp",
+        "repo": "Omnisharp-vim",
+        "rev": "2205888fdcaf2b6008d115f343ddc31697a62151",
+        "type": "github"
+      },
+      "original": {
+        "owner": "OmniSharp",
+        "repo": "Omnisharp-vim",
+        "type": "github"
+      }
+    },
     "onedark": {
       "flake": false,
       "locked": {
@@ -838,6 +854,7 @@
         "nvim-ts-autotag": "nvim-ts-autotag",
         "nvim-web-devicons": "nvim-web-devicons",
         "oil": "oil",
+        "omnisharp": "omnisharp",
         "onedark": "onedark",
         "plenary-nvim": "plenary-nvim",
         "render-markdown-nvim": "render-markdown-nvim",

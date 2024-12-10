@@ -24,6 +24,44 @@ in
 
     clang = mkEnableOption "C language LSP";
 
+    csharp = {
+      enable = mkEnableOption "C# language LSP";
+      description = "Enable the C# LSP";
+
+      type = mkOption {
+        type = types.enum [
+          "omnisharp"
+          "csharp_ls"
+        ];
+        default = "omnisharp";
+        description = "Whether to use `omnisharp` or `csharp_ls`";
+      };
+
+      omnisharpSettings = mkOption {
+        type = types.str;
+        default = ''
+          {
+            FormattingOptions = {
+              EnableEditorConfigSupport = true,
+              OrganizeImports = true,
+            },
+            MsBuild = {
+              LoadProjectsOnDemand = nil,
+            },
+            RoslynExtensionsOptions = {
+              EnableAnalyzersSupport = true,
+              EnableImportCompletion = true,
+              AnalyzeOpenDocumentsOnly = true,
+            },
+            Sdk = {
+              IncludePrereleases = true,
+            },
+          }
+        '';
+        description = "options to pass to omnisharp";
+      };
+    };
+
     go = mkEnableOption "Go language LSP";
 
     nix = {
@@ -95,6 +133,7 @@ in
         crates-nvim
         rust-tools
       ])
+      ++ (withPlugins cfg.csharp.enable (if cfg.csharp.type == "omnisharp" then [ omnisharp ] else [ ]))
       ++ (withPlugins cfg.scala.enable [ nvim-metals ]);
 
     vim.configRC = ''
@@ -187,6 +226,23 @@ in
            capabilities = capabilities;
            on_attach = default_on_attach;
            cmd = {"${pkgs.ccls}/bin/ccls"}
+         }
+       ''}
+
+       ${writeIf (cfg.csharp.enable && cfg.csharp.type == "omnisharp") ''
+         -- C# omnisharp config
+         lspconfig.omnisharp.setup {
+           capabilities = capabilities;
+           on_attach = default_on_attach;
+           cmd = {"${pkgs.omnisharp-roslyn}/bin/omnisharp"},
+           settings = ${cfg.csharp.omnisharpSettings}
+         }
+       ''}
+
+       ${writeIf (cfg.csharp.enable && cfg.csharp.type == "csharp_ls") ''
+         -- C# csharp_ls config
+         lspconfig.csharp_ls.setup { 
+          cmd = {"${pkgs.csharp-ls}/bin/csharp-ls"},
          }
        ''}
 
