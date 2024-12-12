@@ -9,6 +9,7 @@ with builtins;
 
 let
   cfg = config.vim.lsp;
+  dap = config.vim.dap;
 
   metalsServerProperties =
     let
@@ -364,6 +365,13 @@ in
          vim.cmd([[autocmd!]])
          vim.cmd([[autocmd FileType java,scala,sbt lua require('metals').initialize_or_attach(metals_config)]])
          vim.cmd([[augroup end]])
+
+         metals_config.on_attach = function(client, bufnr)
+          ${writeIf (dap.enable && dap.scala) ''
+            require("metals").setup_dap()
+          ''}
+           return metals_config
+         end
        ''}  
     '';
   };

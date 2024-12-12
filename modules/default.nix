@@ -5,6 +5,7 @@
     ./basic
     ./core
     ./completion
+    ./dap
     ./filetree
     ./format
     ./git

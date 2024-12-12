@@ -27,6 +27,10 @@ let
         multiple-cursors
         vim-repeat
       ];
+      dap = {
+        enable = true;
+        scala = true;
+      };
       mapLeaderSpace = true;
       filetree = {
         enable = true;

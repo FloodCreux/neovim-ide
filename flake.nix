@@ -143,6 +143,32 @@
       flake = false;
     };
 
+    # DAP
+    dap = {
+      url = "github:mfussenegger/nvim-dap";
+      flake = false;
+    };
+
+    dapui = {
+      url = "github:rcarriga/nvim-dap-ui";
+      flake = false;
+    };
+
+    nvim-nio = {
+      url = "github:nvim-neotest/nvim-nio";
+      flake = false;
+    };
+
+    neodev = {
+      url = "github:/folke/neodev.nvim";
+      flake = false;
+    };
+
+    dapgo = {
+      url = "github:leoluz/nvim-dap-go";
+      flake = false;
+    };
+
     # Themes
     catppuccin = {
       url = "github:catppuccin/nvim";
