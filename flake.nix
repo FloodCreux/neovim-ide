@@ -40,6 +40,11 @@
       flake = false;
     };
 
+    actions-preview = {
+      url = "github:aznhe21/actions-preview.nvim";
+      flake = false;
+    };
+
     omnisharp = {
       url = "github:OmniSharp/Omnisharp-vim";
       flake = false;

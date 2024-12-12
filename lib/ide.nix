@@ -66,6 +66,7 @@ let
         nix = {
           enable = true;
         };
+        codeActions.enable = true;
         rust = {
           enable = true;
         };
