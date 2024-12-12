@@ -112,7 +112,7 @@ in
                 program = function()
                   return vim.fn.input('Path to dll: ', vim.fn.getcwd() .. '/', 'file')
                 end,
-                cwd = '${workspaceFolder}',
+                cwd = '$${workspaceFolder}',
               },
             }
           end
