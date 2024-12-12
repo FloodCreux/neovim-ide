@@ -47,7 +47,7 @@ in
       })
 
       ${writeIf cfg.yazi.enable ''
-        vim.keymap.set('n', '<leader>pv', '<CMD>Yazi<CR>', { desc = 'Open parent directory' })
+        vim.keymap.set('n', '<leader>pv', function() require('yazi').yazi() end, { desc = 'Open parent directory' })
       ''}
 
       ${writeIf cfg.oil.enable ''
@@ -61,10 +61,12 @@ in
             show_hidden = true,
           },
           skip_confirm_for_simple_edits = true,
+          float = {
+            padding = 10,
+          },
         }
 
-        vim.keymap.set('n', '<leader>pv', '<CMD>Oil<CR>', { desc = 'Open parent directory' })
-        vim.keymap.set('n', '<leader>-', require('oil').toggle_float)
+        vim.keymap.set('n', '<leader>pv', require('oil').toggle_float, { desc = 'Open parent directory' })
       ''}
     '';
   };

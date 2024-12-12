@@ -1223,15 +1223,15 @@
     "yazi": {
       "flake": false,
       "locked": {
-        "lastModified": 1717251792,
-        "narHash": "sha256-xKwQXwvqGBNveu94i6NW4I7L/mAnbqLmYS3Uc/6qTyw=",
-        "owner": "DreamMaoMao",
+        "lastModified": 1733991057,
+        "narHash": "sha256-GIBXiHGW+7aKOR6c3mkJz05CdewFE9gAhbbvIZcxiEc=",
+        "owner": "mikavilpas",
         "repo": "yazi.nvim",
-        "rev": "0e7dce1a936b92099180ff80cbf35eb7e8a5f660",
+        "rev": "89e011ee7df170e681a112bb293c2599b3b97853",
         "type": "github"
       },
       "original": {
-        "owner": "DreamMaoMao",
+        "owner": "mikavilpas",
         "repo": "yazi.nvim",
         "type": "github"
       }

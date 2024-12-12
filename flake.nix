@@ -144,7 +144,7 @@
 
     # File Trees
     yazi = {
-      url = "github:DreamMaoMao/yazi.nvim";
+      url = "github:mikavilpas/yazi.nvim";
       flake = false;
     };
 
