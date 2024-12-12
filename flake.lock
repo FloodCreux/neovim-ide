@@ -967,6 +967,7 @@
         "telescope-media-files": "telescope-media-files",
         "telescope-tabs": "telescope-tabs",
         "tokyonight": "tokyonight",
+        "tree-sitter-c-sharp": "tree-sitter-c-sharp",
         "tree-sitter-scala": "tree-sitter-scala",
         "trouble": "trouble",
         "vim-fugitive": "vim-fugitive",
@@ -1099,6 +1100,22 @@
       "original": {
         "owner": "folke",
         "repo": "tokyonight.nvim",
+        "type": "github"
+      }
+    },
+    "tree-sitter-c-sharp": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1733413129,
+        "narHash": "sha256-jcZcmqQEOPzkiT1jJ4wuE9Ryg10XXpwBoyANNAhCbZg=",
+        "owner": "tree-sitter",
+        "repo": "tree-sitter-c-sharp",
+        "rev": "4bf615f8d688f50d69fc5677187dc35f22e03ad6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "tree-sitter",
+        "repo": "tree-sitter-c-sharp",
         "type": "github"
       }
     },

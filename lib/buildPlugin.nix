@@ -15,6 +15,7 @@ let
   ts = prev.tree-sitter.override {
     extraGrammars = {
       tree-sitter-scala = final.tree-sitter-scala-master;
+      tree-sitter-c-scharp = final.tree-sitter-c-sharp.master;
     };
   };
 
@@ -81,7 +82,8 @@ rec {
       p.tree-sitter-html
       p.tree-sitter-bash
       p.tree-sitter-ocaml
-      p.tree-sitter-c-sharp
+      # Broken... need to manually :TSInstall c_sharp
+      # p.tree-sitter-c-sharp
       p.tree-sitter-lua
       # p.tree-sitter-luadoc
       p.tree-sitter-nu

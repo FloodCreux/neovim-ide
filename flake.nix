@@ -61,6 +61,11 @@
       flake = false;
     };
 
+    tree-sitter-c-sharp = {
+      url = "github:tree-sitter/tree-sitter-c-sharp";
+      flake = false;
+    };
+
     nvim-treesitter-textobjects = {
       url = "github:nvim-treesitter/nvim-treesitter-textobjects";
       flake = false;
@@ -304,6 +309,7 @@
               "nmd"
               "nixd"
               "tree-sitter-scala"
+              "tree-sitter-c-sharp"
             ];
           in
           builtins.attrNames (f nonPluginInputNames inputs);
