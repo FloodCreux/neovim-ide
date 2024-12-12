@@ -292,22 +292,6 @@
     // flake-utils.lib.eachDefaultSystem (
       system:
       let
-        pkgs = import nixpkgs {
-          inherit system;
-          config = {
-            allowUnfree = true;
-          };
-          overlays = [
-            libOverlay
-            pluginOverlay
-            metalsOverlay
-            neovimOverlay
-            # nmdOverlay
-            nixdOverlay
-            tsOverlay
-          ];
-        };
-
         plugins =
           let
             f = xs: pkgs.lib.attrsets.filterAttrs (k: v: !builtins.elem k xs);
@@ -326,42 +310,16 @@
 
         lib = import ./lib { inherit pkgs inputs plugins; };
 
-        inherit (lib) metalsBuilder metalsOverlay neovimBuilder;
+        overlays = import ./lib/overlays.nix { inherit lib inputs system; };
 
-        pluginOverlay = lib.buildPluginOverlay;
-
-        libOverlay = f: p: {
-          lib = p.lib.extend (
-            _: _: {
-              inherit (lib)
-                mkVimBool
-                withAttrSet
-                withPlugins
-                writeIf
-                ;
-            }
-          );
-        };
-
-        tsOverlay = f: p: {
-          tree-sitter-scala-master = p.tree-sitter.buildGrammar {
-            language = "scala";
-            version = inputs.tree-sitter-scala.rev;
-            src = inputs.tree-sitter-scala;
+        pkgs = import nixpkgs {
+          inherit overlays system;
+          config = {
+            allowUnfree = true;
           };
         };
 
-        neovimOverlay = f: p: {
-          neovim-nightly = inputs.neovim-nightly-overlay.packages.${system}.neovim;
-        };
-
-        nixdOverlay = f: p: {
-          inherit (inputs.nixd.packages.${system}) nixd;
-        };
-
-        default-ide = pkgs.callPackage ./lib/ide.nix {
-          inherit pkgs neovimBuilder;
-        };
+        default-ide = pkgs.callPackage ./lib/ide.nix { };
       in
       rec {
         apps = rec {
@@ -374,9 +332,12 @@
         };
 
         overlays.default = f: p: {
-          inherit metalsBuilder neovimBuilder;
-          inherit (pkgs) neovim-nightly neovimPlugins;
-          lib = p.lib;
+          inherit (pkgs)
+            metalsBuilder
+            neovimBuilder
+            neovim-nightly
+            neovimPlugins
+            ;
         };
 
         homeManagerModules.nvim = {

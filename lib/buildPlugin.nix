@@ -18,11 +18,25 @@ let
     };
   };
 
+  queriesHook = ''
+    mkdir -p $out/queries/scala/
+    cp ${inputs.tree-sitter-scala}/queries/* $out/queries/scala/
+  '';
+
   telescopeFixupHook = ''
     substituteInPlace $out/scripts/vimg \
-      --replace "ueberzug layer" "${pkgs.ueberzug}/bin/ueberzug layer"
+      --replace "chafa" "${pkgs.chafa}/bin/chafa"
     substituteInPlace $out/lua/telescope/_extensions/media_files.lua \
       --replace "M.base_directory .. '/scripts/vimg'" "'$out/scripts/vimg'"
+  '';
+
+  tsPreFixupHook = ''
+    ${queriesHook}
+  '';
+
+  tsPostPatchHook = grammars: ''
+    rm -r parser
+    ln -s ${grammars} parser
   '';
 
   buildPlug =
@@ -32,7 +46,11 @@ let
       version = "master";
       src = builtins.getAttr name inputs;
       preFixup = ''
+        ${writeIf (name == "nvim-treesitter") tsPreFixupHook}
         ${writeIf (name == "telescope-media-files") telescopeFixupHook}
+      '';
+      postPatch = ''
+        ${writeIf (name == "nvim-treesitter") (tsPostPatchHook grammars)}
       '';
     };
 
@@ -55,9 +73,9 @@ rec {
       p.tree-sitter-toml
       p.tree-sitter-zig
       p.tree-sitter-vim
-      p.tree-sitter-vimdoc
+      # p.tree-sitter-vimdoc
       p.tree-sitter-hcl
-      p.tree-sitter-terraform
+      # p.tree-sitter-terraform
       p.tree-sitter-yaml
       p.tree-sitter-make
       p.tree-sitter-html
@@ -65,7 +83,8 @@ rec {
       p.tree-sitter-ocaml
       p.tree-sitter-c-sharp
       p.tree-sitter-lua
-      p.tree-sitter-luadoc
+      # p.tree-sitter-luadoc
+      p.tree-sitter-nu
     ]);
 
   neovimPlugins =

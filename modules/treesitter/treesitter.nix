@@ -51,7 +51,11 @@ in
 
     vim.luaConfigRC = ''
       -- Treesitter config
+      vim.opt.runtimepath:prepend(vim.fn.expand('~/.local/share/nvim/nvim-treesitter/parsers'))
+
       require'nvim-treesitter.configs'.setup {
+        parser_install_dir = vim.fn.expand('~/.local/share/nvim/nvim-treesitter/parsers'),
+
         highlight = {
           enable = true,
         },
