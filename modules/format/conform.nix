@@ -45,7 +45,9 @@ in
           xml = { 'xmllint' },
           -- sql = { 'sqlfmt' },
           markdown = { 'prettier' },
+          ocaml = { 'ocamlformat'  },
           nix = { 'nixfmt' },
+          tf = { 'terraform_fmt' }
         },
         format_after_save = function(bufnr)
           if not slow_format_filetypes[vim.bo[bufnr].filetype] then

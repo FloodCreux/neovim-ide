@@ -123,6 +123,10 @@ in
       };
     };
 
+    terraform = {
+      enable = mkEnableOption "Terraform LSP";
+    };
+
     ts = mkEnableOption "TS language LSP";
   };
 
@@ -373,6 +377,10 @@ in
            return metals_config
          end
        ''}  
+
+       ${writeIf cfg.terraform.enable ''
+         lspconfig.terraformls.setup {}
+       ''}
     '';
   };
 }

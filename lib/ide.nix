@@ -86,6 +86,9 @@ let
             ];
           };
         };
+        terraform = {
+          enable = true;
+        };
 
         trouble.enable = true;
       };
