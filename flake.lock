@@ -968,6 +968,7 @@
         "telescope-tabs": "telescope-tabs",
         "tokyonight": "tokyonight",
         "tree-sitter-c-sharp": "tree-sitter-c-sharp",
+        "tree-sitter-hocon": "tree-sitter-hocon",
         "tree-sitter-scala": "tree-sitter-scala",
         "trouble": "trouble",
         "vim-fugitive": "vim-fugitive",
@@ -1116,6 +1117,22 @@
       "original": {
         "owner": "tree-sitter",
         "repo": "tree-sitter-c-sharp",
+        "type": "github"
+      }
+    },
+    "tree-sitter-hocon": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1667813940,
+        "narHash": "sha256-9Zo3YYoo9mJ4Buyj7ofSrlZURrwstBo0vgzeTq1jMGw=",
+        "owner": "antosha417",
+        "repo": "tree-sitter-hocon",
+        "rev": "c390f10519ae69fdb03b3e5764f5592fb6924bcc",
+        "type": "github"
+      },
+      "original": {
+        "owner": "antosha417",
+        "repo": "tree-sitter-hocon",
         "type": "github"
       }
     },

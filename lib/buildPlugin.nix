@@ -16,6 +16,7 @@ let
     extraGrammars = {
       tree-sitter-scala = final.tree-sitter-scala-master;
       tree-sitter-c-scharp = final.tree-sitter-c-sharp.master;
+      tree-sitter-hocon = final.tree-sitter-hocon-master;
     };
   };
 
@@ -87,6 +88,7 @@ rec {
       p.tree-sitter-lua
       # p.tree-sitter-luadoc
       p.tree-sitter-nu
+      p.tree-sitter-hocon
     ]);
 
   neovimPlugins =

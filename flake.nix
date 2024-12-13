@@ -66,6 +66,11 @@
       flake = false;
     };
 
+    tree-sitter-hocon = {
+      url = "github:antosha417/tree-sitter-hocon";
+      flake = false;
+    };
+
     nvim-treesitter-textobjects = {
       url = "github:nvim-treesitter/nvim-treesitter-textobjects";
       flake = false;

@@ -30,6 +30,12 @@ let
       version = inputs.tree-sitter-scala.rev;
       src = inputs.tree-sitter-scala;
     };
+
+    tree-sitter-hocon-master = p.tree-sitter.buildGrammar {
+      language = "hocon";
+      version = inputs.tree-sitter-hocon;
+      src = inputs.tree-sitter-hocon;
+    };
   };
 
   neovimOverlay = f: p: {
