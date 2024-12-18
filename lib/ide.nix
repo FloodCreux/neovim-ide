@@ -63,6 +63,7 @@ let
           enable = true;
           type = "csharp_ls";
         };
+        elixir = true;
         go = true;
         haskell = true;
         nix = {
