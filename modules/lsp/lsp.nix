@@ -63,6 +63,8 @@ in
       };
     };
 
+    elixir = mkEnableOption "Elixir language LSP";
+
     go = mkEnableOption "Go language LSP";
 
     haskell = mkEnableOption "Haskell LSP";
@@ -250,6 +252,13 @@ in
          -- C# csharp_ls config
          lspconfig.csharp_ls.setup { 
           cmd = {"${pkgs.csharp-ls}/bin/csharp-ls"},
+         }
+       ''}
+
+       ${writeIf cfg.elixir ''
+         -- Elixir config
+         lspconfig.elixirls.setup {
+          cmd = {${pkgs.elixir-ls}/language_server.sh};
          }
        ''}
 
