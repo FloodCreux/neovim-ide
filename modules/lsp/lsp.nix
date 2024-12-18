@@ -65,6 +65,8 @@ in
 
     go = mkEnableOption "Go language LSP";
 
+    haskell = mkEnableOption "Haskell LSP";
+
     nix = {
       enable = mkEnableOption "Nix LSP";
       type = mkOption {
@@ -257,6 +259,16 @@ in
            capabilities = capabilities;
            on_attach = default_on_attach;
            cmd = {"${pkgs.gopls}/bin/gopls", "serve"},
+         }
+       ''}
+
+       ${writeIf cfg.haskell ''
+         -- Haskell config
+         lsponfig.hls.setup {
+           capabilities = capabilities;
+           on_attach = default_on_attach;
+           cmd = {"${pkgs.haskell-language-server}/bin/haskell-language-server-wrapper", "--lsp"};
+           root_dir = lspconfig.util.root_pattern("hie.yaml", "stack.yaml", ".cabal", "cabal.project", "package.yaml");
          }
        ''}
 
