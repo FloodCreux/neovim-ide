@@ -264,7 +264,7 @@ in
 
        ${writeIf cfg.haskell ''
          -- Haskell config
-         lsponfig.hls.setup {
+         lspconfig.hls.setup {
            capabilities = capabilities;
            on_attach = default_on_attach;
            cmd = {"${pkgs.haskell-language-server}/bin/haskell-language-server-wrapper", "--lsp"};
