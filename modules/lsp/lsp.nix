@@ -258,7 +258,7 @@ in
        ${writeIf cfg.elixir ''
          -- Elixir config
          lspconfig.elixirls.setup {
-          cmd = {${pkgs.elixir-ls}/language_server.sh};
+          cmd = {"${pkgs.elixir-ls}/bin/elixir-ls"},
          }
        ''}
 
