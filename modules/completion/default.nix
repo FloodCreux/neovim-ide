@@ -27,7 +27,7 @@ in
       nvim-cmp
       cmp-buffer
       cmp-vsnip
-      cmp-path
+      # cmp-path
       cmp-treesitter
     ];
 
