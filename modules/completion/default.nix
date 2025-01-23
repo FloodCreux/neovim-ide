@@ -25,8 +25,8 @@ in
   config = mkIf cfg.enable {
     vim.startPlugins = with pkgs.neovimPlugins; [
       nvim-cmp
-      cmp-buffer
-      cmp-vsnip
+      # cmp-buffer
+      # cmp-vsnip
       # cmp-path
       cmp-treesitter
     ];
