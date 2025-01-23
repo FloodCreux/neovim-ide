@@ -47,7 +47,8 @@ in
           markdown = { 'prettier' },
           ocaml = { 'ocamlformat'  },
           nix = { 'nixfmt' },
-          tf = { 'terraform_fmt' }
+          tf = { 'terraform_fmt' },
+          terraform = { 'terraform_fmt' },
         },
         format_after_save = function(bufnr)
           if not slow_format_filetypes[vim.bo[bufnr].filetype] then
